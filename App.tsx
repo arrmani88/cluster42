@@ -1,12 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import type {PropsWithChildren} from 'react';
+import {Button, Dimensions, Pressable} from 'react-native';
+import Logo42 from './src/images/42_logo.svg';
+import {ProgressBar} from '@react-native-community/progress-bar-android';
+import {percentage} from './src/utils/percentage';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,102 +13,98 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {padding} from './src/utils/padding';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+type SectionProps = PropsWithChildren<{}>;
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+const ww = Dimensions.get('window').width;
+const wh = Dimensions.get('window').height;
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  useEffect(() => {
+    const pauseCode = async () => {
+      await new Promise<void>(resolve => setTimeout(resolve, 3000));
+      setIsLoading(false);
+    };
+    pauseCode();
+  }, []);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar barStyle={'dark-content'} backgroundColor={'#E5E5E5'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+        style={styles.scroller}
+        contentContainerStyle={styles.contentContainer}>
+        <View style={styles.logoWrapper}>
+          <Logo42 style={styles.logo} />
+          <Text style={styles.clusterText}> CLUSTER </Text>
+          <View style={{height: 200}} />
         </View>
+        {isLoading ? (
+          <>
+            <View style={styles.progressBarContainer}>
+              <ProgressBar styleAttr="Horizontal" color="#3D6670" />
+            </View>
+            <Text style={styles.creditsText}>
+              {'Made in 1337 KH by:\nabouazi, anel-bou & aait-ihi'}
+            </Text>
+          </>
+        ) : (
+          <Pressable style={styles.button}>
+            <Text>SIGN IN WITH 42 INTRA</Text>
+          </Pressable>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  scroller: {
+    backgroundColor: '#E5E5E5',
   },
-  sectionTitle: {
-    fontSize: 24,
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: percentage(60, ww),
+    aspectRatio: 3 / 2,
+    color: '#3D6670',
+  },
+  clusterText: {
+    color: '#3D6670',
     fontWeight: '600',
+    fontSize: 50,
+    fontFamily: 'Futura BoldItalic',
+    paddingRight: 10,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  progressBarContainer: {
+    width: ww,
+    ...padding(0, percentage(20, ww)),
+    position: 'absolute',
+    bottom: percentage(40, ww),
   },
-  highlight: {
-    fontWeight: '700',
+  creditsText: {
+    position: 'absolute',
+    color: '#3D6670',
+    textAlign: 'center',
+    fontSize: 13,
+    bottom: percentage(20, ww),
+  },
+  button: {
+    backgroundColor: '#3D6670',
+    ...padding(10, 20),
+    borderRadius: 10
   },
 });
 
