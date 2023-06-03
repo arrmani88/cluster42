@@ -1,17 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, View } from 'react-native';
-import Landing from './src/screens/Landing';
-import Card from './src/screens/Card';
+import LandingScreen from './src/screens/LandingScreen';
+import CardScreen from './src/screens/CardScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#E5E5E5'} />
-      <View style={{flex: 1, display: 'flex'}}>
-        <Card />
-        <Landing />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+          <Stack.Navigator initialRouteName='Card' screenOptions={{headerShown: false }}>
+            <Stack.Screen name={'Landing'} component={LandingScreen} />
+            <Stack.Screen name={'Card'} component={CardScreen} />
+          </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 

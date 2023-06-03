@@ -52,5 +52,6 @@ export const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 16,
+    color: 'white'
   },
 });
