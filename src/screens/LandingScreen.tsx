@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {Pressable, SafeAreaView, StatusBar} from 'react-native';
-import Logo42 from '../images/42_logo.svg';
+import Logo42 from '../images/42-logo.svg';
 import {ProgressBar} from '@react-native-community/progress-bar-android';
 import {ScrollView, Text, useColorScheme, View} from 'react-native';
 import {styles} from './styles/Landing';
+import { useTheme } from '@react-navigation/native';
+import { CustomTheme } from '../constants/theme';
 
 const LandingScreen = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const theme = useTheme() as CustomTheme
+
+  const style = styles(theme)
+  // console.log('style=', style)
 
   useEffect(() => {
     const pauseCode = async () => {
@@ -23,26 +29,26 @@ const LandingScreen = (): JSX.Element => {
         <View style={{flex: 1, display: 'flex'}}>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
-            style={styles.scroller}
-            contentContainerStyle={styles.contentContainer}
+            style={styles(theme).scroller}
+            contentContainerStyle={style.contentContainer}
           >
-            <View style={styles.logoWrapper}>
-              <Logo42 style={styles.logo} />
-              <Text style={styles.clusterText}> CLUSTER </Text>
+            <View style={style.logoWrapper}>
+              <Logo42 style={styles(theme).logo} />
+              {/* <Text style={style.clusterText}> CLUSTER </Text> */}
               <View style={{height: 200}} />
             </View>
             {isLoading ? (
               <>
-                <View style={styles.progressBarContainer}>
+                <View style={style.progressBarContainer}>
                   <ProgressBar styleAttr="Horizontal" color="#3D6670" />
                 </View>
-                <Text style={styles.creditsText}>
+                <Text style={styles(theme).creditsText}>
                   {'Made in 1337 KH by:\nabouazi, anel-bou & aait-ihi'}
                 </Text>
               </>
             ) : (
-              <Pressable style={styles.button}>
-                <Text style={styles.textButton}>SIGN IN WITH 42 INTRA</Text>
+              <Pressable style={styles(theme).button}>
+                <Text style={styles(theme).textButton}>SIGN IN WITH 42 INTRA</Text>
               </Pressable>
             )}
           </ScrollView>
