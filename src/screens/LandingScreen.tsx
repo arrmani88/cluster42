@@ -12,7 +12,6 @@ const LandingScreen = (): JSX.Element => {
   const theme = useTheme() as CustomTheme
 
   const style = styles(theme)
-  // console.log('style=', style)
 
   useEffect(() => {
     const pauseCode = async () => {
@@ -24,7 +23,7 @@ const LandingScreen = (): JSX.Element => {
 
   return (
     <>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#E5E5E5'} />
+      <StatusBar barStyle={'dark-content'} backgroundColor={theme.colors.statusBarBackground} />
       <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1, display: 'flex'}}>
           <ScrollView

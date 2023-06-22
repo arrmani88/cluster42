@@ -7,6 +7,7 @@ import { Provider, useSelector } from 'react-redux';
 import { selectThemeMode } from './src/redux/themeModeSlice';
 import store from './src/redux/store';
 import AppTheme from './src/constants/theme';
+import ProfileScreen from './src/screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,13 +22,13 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer theme={theme === 'dark' ? AppTheme.darkTheme : AppTheme.lightTheme}>
-      <Stack.Navigator initialRouteName='Landing' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='Profile' screenOptions={{ headerShown: false }}>
         <Stack.Screen name={'Landing'} component={LandingScreen} />
         <Stack.Screen name={'Card'} component={CardScreen} />
+        <Stack.Screen name={'Profile'} component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
-
 
 export default AppWrapper;

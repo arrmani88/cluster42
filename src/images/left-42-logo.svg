@@ -1,7 +1,7 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 828" width="448" height="828">
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="32 -51.1 845 880">
 	<title>42_logo-svg</title>
 	<style>
-		.s0 { fill: #000000 } 
+		.s0 { fill: currentColor } 
 	</style>
 	<path id="polygon5" class="s0" d="m0 464.6h330.1v165.4h164.7v-298.9h-329.5l329.5-330.2h-164.7l-330.1 330.2z"/>
 	<path id="polygon7" class="s0" d="m565.9 166.2l164.8-165.3h-164.8z"/>
