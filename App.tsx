@@ -16,12 +16,10 @@ function AppWrapper() {
 }
 
 function App(): JSX.Element {
-  const theme = useSelector(selectThemeMode)
-
-  useEffect(() => { console.log('theme=', theme) }, [theme])
+  const themeMode = useSelector(selectThemeMode)
 
   return (
-    <NavigationContainer theme={theme === 'dark' ? AppTheme.darkTheme : AppTheme.lightTheme}>
+    <NavigationContainer theme={themeMode === 'dark' ? AppTheme.darkTheme : AppTheme.lightTheme}>
       <Stack.Navigator initialRouteName='Profile' screenOptions={{ headerShown: false }}>
         <Stack.Screen name={'Landing'} component={LandingScreen} />
         <Stack.Screen name={'Card'} component={CardScreen} />

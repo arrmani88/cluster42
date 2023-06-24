@@ -12,7 +12,7 @@ const AppTheme: AppThemeInterface = {
     colors: {
       ...DefaultTheme.colors,
       primary: '#3D6670',
-      bgPrimary: '#252B3D',
+      bgPrimary: '#ffffff',
       bgSecondary: '#F1F3F6',
       primaryText: '#ffffff',
       secondaryText: '#375A63',
@@ -20,7 +20,7 @@ const AppTheme: AppThemeInterface = {
       logoSecondary: 'rgba(61, 102, 112, 0.2)',
       coalition: {
         freax: '#EBBE54',
-        co: '#A52A7F',
+        bios: '#A52A7F',
         commodore: '#345921',
         pandora: '#62CACF',
       },
@@ -33,7 +33,7 @@ const AppTheme: AppThemeInterface = {
     colors: {
       ...DarkTheme.colors,
       primary: '#3D6670',
-      bgPrimary: '#ffffff',
+      bgPrimary: '#252B3D',
       bgSecondary: '#101729',
       primaryText: '#ffffff',
       secondaryText: '#ffffff',
@@ -41,7 +41,7 @@ const AppTheme: AppThemeInterface = {
       logoSecondary: 'rgba(255, 255, 255, 0.2)',
       coalition: {
         freax: '#EBBE54',
-        co: '#A52A7F',
+        bios: '#A52A7F',
         commodore: '#345921',
         pandora: '#62CACF',
       },
@@ -60,7 +60,7 @@ export interface CustomTheme extends Theme {
     coalition: {
       freax: string;
       commodore: string;
-      co: string;
+      bios: string;
       pandora: string;
     };
   };
