@@ -54,6 +54,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Futura BoldItalic.ttf</string>
+		<string>consola.ttf</string>
+		<string>consolab.ttf</string>
 	</array>
 </dict>
 </plist>

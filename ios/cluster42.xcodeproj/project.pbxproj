@@ -15,6 +15,8 @@
 		7699B88040F8A987B510C191 /* libPods-cluster42-cluster42Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-cluster42-cluster42Tests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		7564D57B2A1348B3B38B3DBD /* Futura BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 691AD733C3DE44D7A8A1EF2A /* Futura BoldItalic.ttf */; };
+		E08BB44217794F5F869A1DC9 /* consola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F834FE7260A142A690D0BCE5 /* consola.ttf */; };
+		4611A094FA904696A5C065CC /* consolab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9CF705C3FF747D3A3A1C87C /* consolab.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-cluster42-cluster42Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cluster42-cluster42Tests.release.xcconfig"; path = "Target Support Files/Pods-cluster42-cluster42Tests/Pods-cluster42-cluster42Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		691AD733C3DE44D7A8A1EF2A /* Futura BoldItalic.ttf */ = {isa = PBXFileReference; name = "Futura BoldItalic.ttf"; path = "../assets/fonts/Futura BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F834FE7260A142A690D0BCE5 /* consola.ttf */ = {isa = PBXFileReference; name = "consola.ttf"; path = "../assets/fonts/consola.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F9CF705C3FF747D3A3A1C87C /* consolab.ttf */ = {isa = PBXFileReference; name = "consolab.ttf"; path = "../assets/fonts/consolab.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 			isa = "PBXGroup";
 			children = (
 				691AD733C3DE44D7A8A1EF2A /* Futura BoldItalic.ttf */,
+				F834FE7260A142A690D0BCE5 /* consola.ttf */,
+				F9CF705C3FF747D3A3A1C87C /* consolab.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				7564D57B2A1348B3B38B3DBD /* Futura BoldItalic.ttf in Resources */,
+				E08BB44217794F5F869A1DC9 /* consola.ttf in Resources */,
+				4611A094FA904696A5C065CC /* consolab.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

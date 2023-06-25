@@ -14,7 +14,7 @@ const AppTheme: AppThemeInterface = {
       primary: '#3D6670',
       bgPrimary: '#ffffff',
       bgSecondary: '#F1F3F6',
-      primaryText: '#ffffff',
+      primaryText: '#375A63',
       secondaryText: '#375A63',
       statusBarBackground: '#F1F3F6',
       logoSecondary: 'rgba(61, 102, 112, 0.2)',
@@ -24,6 +24,8 @@ const AppTheme: AppThemeInterface = {
         commodore: '#345921',
         pandora: '#62CACF',
       },
+      boxShadow: 'rgba(0, 0, 0, 0.4)',
+      bgMinor: '#e9e9e9'
     },
   },
 
@@ -45,6 +47,8 @@ const AppTheme: AppThemeInterface = {
         commodore: '#345921',
         pandora: '#62CACF',
       },
+      boxShadow: 'black',
+      bgMinor: 'black'
     },
   },
 };
@@ -63,7 +67,10 @@ export interface CustomTheme extends Theme {
       bios: string;
       pandora: string;
     };
+    boxShadow: string;
+    bgMinor: string
   };
 }
 
 export default AppTheme;
+export type CoalitionName = 'freax' | 'bios' | 'commodore' | 'pandora'
