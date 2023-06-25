@@ -13,7 +13,7 @@ const ThemeBox = ({ children, style }: Props): JSX.Element => {
     const theme = useTheme() as CustomTheme
     const st = styles(theme)
 
-    return <View style={[st.container, StyleSheet.flatten(style)]}>
+return <View style={[st.container, StyleSheet.flatten(style)]}>
         {children}
     </View>
 }

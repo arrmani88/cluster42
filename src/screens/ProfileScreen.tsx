@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import React from 'react'
+import React, { useState } from 'react'
 import BackgroundWall from '../common-components/BackgroundWall';
 import { ScrollView, Text, View } from 'react-native';
 import { Image } from 'react-native';
@@ -7,6 +7,8 @@ import styles from './styles/Profile'
 import { CustomTheme } from '../constants/theme';
 import ThemeBox from '../common-components/ThemeBox';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 // const staticAvatarImage = 'https://cdn.intra.42.fr/users/a30e79f01cb80c11ff1217906e1b08f7/anel-bou.jpg'
 const staticAvatarImage = 'https://scontent.fcmn1-2.fna.fbcdn.net/v/t39.30808-6/317411499_2411854758970767_3524964030019514981_n.jpg?_nc_cat=100&cb=99be929b-59f725be&ccb=1-7&_nc_sid=174925&_nc_eui2=AeECnQgA2BnvN0Ac4eMX4lcXf_1K6ReVnhp__UrpF5WeGsXaEgcSVyLuSSkMAqckgauTqc5BXL6q6_xBSaj7gOX4&_nc_ohc=oFc0Ujnm8KUAX-9V3VD&_nc_ht=scontent.fcmn1-2.fna&oh=00_AfDzunBQoCeaKnaLSJ9q3SsbKFHcHiuWraP2hAadlcm4gw&oe=649B6D04'
@@ -36,12 +38,17 @@ const staticHistory = () => {
 
 const ProfileScreen = (): JSX.Element => {
 	const theme = useTheme() as CustomTheme;
+	const [isHistoryExpanded, setIsHistoryExpanded] = useState<boolean>(false)
+
+	const handleExpandHistory = () => {
+
+	}
 
 	const st = styles(theme, staticCoalition)
 
 	return (
 		<BackgroundWall>
-			<View style={{ flex: 1, display: 'flex' }}>
+			<View style={{ flex: 1 }}>
 				<ScrollView contentContainerStyle={st.scrollView}>
 					<View style={st.avatarBorder}>
 						<Image
@@ -76,19 +83,20 @@ const ProfileScreen = (): JSX.Element => {
 						</View>
 					</ThemeBox>
 					<ThemeBox>
-						<Text style={st.historyTitle}>Workstations history</Text>
-						<View style={st.scrollableContainer}>
-							<ScrollView>
-								{[...Array(20)].map((_, ndx) => (
-									<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
-										<Text style={st.host}>{staticHistory().host}</Text>
-										<Text style={st.time}>{staticHistory().from}</Text>
-										<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
-										<Text style={st.time}>{staticHistory().to}</Text>
-									</View>
-								))}
-							</ScrollView>
+						<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+							<Text style={st.historyTitle}>Workstations history</Text>
+							<MCIcon name='arrow-expand' size={30} style={st.expandIcon} onPress={handleExpandHistory} />
 						</View>
+						<ScrollView style={st.scrollableContainer} nestedScrollEnabled>
+							{[...Array(20)].map((_, ndx) => (
+								<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
+									<Text style={st.host}>{staticHistory().host}</Text>
+									<Text style={st.time}>{staticHistory().from}</Text>
+									<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
+									<Text style={st.time}>{staticHistory().to}</Text>
+								</View>
+							))}
+						</ScrollView>
 					</ThemeBox>
 				</ScrollView>
 			</View>

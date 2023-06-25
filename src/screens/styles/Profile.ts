@@ -95,15 +95,22 @@ export default (theme: CustomTheme, coalition: CoalitionName) => StyleSheet.crea
         color: theme.colors.coalition[coalition],
         fontFamily: 'consolab',
         paddingBottom: 10,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginRight: 10
+    },
+    expandIcon: {
+        color: theme.colors.coalition[coalition],
+        padding: 0,
+        margin: 0
     },
     scrollableContainer: {
-        height: 210,
+        maxHeight: 200,
         backgroundColor: theme.colors.bgSecondary,
         borderRadius: 4,
         ...padding(8, 0),
     },
     logContainer: {
+        height: 25,
         flexDirection: 'row',
         ...padding(5, 5),
         alignItems: 'center',

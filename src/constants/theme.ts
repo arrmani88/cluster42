@@ -20,9 +20,9 @@ const AppTheme: AppThemeInterface = {
       logoSecondary: 'rgba(61, 102, 112, 0.2)',
       coalition: {
         freax: '#EBBE54',
-        bios: '#A52A7F',
         commodore: '#345921',
-        pandora: '#62CACF',
+        pandora: '#A52A7F',
+        bios: '#62CACF',
       },
       boxShadow: 'rgba(0, 0, 0, 0.4)',
       bgMinor: '#e9e9e9'
@@ -43,9 +43,9 @@ const AppTheme: AppThemeInterface = {
       logoSecondary: 'rgba(255, 255, 255, 0.2)',
       coalition: {
         freax: '#EBBE54',
-        bios: '#A52A7F',
         commodore: '#345921',
-        pandora: '#62CACF',
+        pandora: '#A52A7F',
+        bios: '#62CACF',
       },
       boxShadow: 'black',
       bgMinor: 'black'
@@ -64,8 +64,8 @@ export interface CustomTheme extends Theme {
     coalition: {
       freax: string;
       commodore: string;
-      bios: string;
       pandora: string;
+      bios: string;
     };
     boxShadow: string;
     bgMinor: string
