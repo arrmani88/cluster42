@@ -1,13 +1,14 @@
 import { useTheme } from '@react-navigation/native';
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import BackgroundWall from '../common-components/BackgroundWall';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Animated, Dimensions } from 'react-native';
 import { Image } from 'react-native';
 import styles from './styles/Profile'
 import { CustomTheme } from '../constants/theme';
 import ThemeBox from '../common-components/ThemeBox';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { percentage } from '../utils/percentage';
 
 
 // const staticAvatarImage = 'https://cdn.intra.42.fr/users/a30e79f01cb80c11ff1217906e1b08f7/anel-bou.jpg'
@@ -36,20 +37,55 @@ const staticHistory = () => {
 	}
 }
 
+const wh = Dimensions.get('window').height;
+const ww = Dimensions.get('window').width;
+
+
 const ProfileScreen = (): JSX.Element => {
 	const theme = useTheme() as CustomTheme;
 	const [isHistoryExpanded, setIsHistoryExpanded] = useState<boolean>(false)
+	// const [historyHeight, setHistoryHeight] = useState<Animated.Value>(new Animated.Value(250))
+	// const [transitionY, setTransitionY] = useState<Animated.Value>(new Animated.Value(0))
+
+	const historyHeight = useRef(new Animated.Value(250)).current
+	const transitionY = useRef(new Animated.Value(0)).current
+
+	const st = styles(theme, staticCoalition, historyHeight, transitionY)
 
 	const handleExpandHistory = () => {
-
+		setIsHistoryExpanded(true)
+		Animated.timing(historyHeight, {
+			toValue: percentage(90, wh),
+			duration: 400,
+			useNativeDriver: false,
+		}).start();
+		Animated.timing(transitionY, {
+			toValue: -percentage(125, wh) / 2,
+			duration: 400,
+			useNativeDriver: false
+		}).start()
 	}
-
-	const st = styles(theme, staticCoalition)
+	const handleCollapseHistory = () => {
+		Animated.timing(historyHeight, {
+			toValue: 250,
+			duration: 200,
+			useNativeDriver: false,
+		}).start();
+		Animated.timing(transitionY, {
+			toValue: 0,
+			duration: 200,
+			useNativeDriver: false
+		}).start()
+		setTimeout(() => {
+			setIsHistoryExpanded(false)
+		}, 150)
+	}
 
 	return (
 		<BackgroundWall>
 			<View style={{ flex: 1 }}>
-				<ScrollView contentContainerStyle={st.scrollView}>
+				<ScrollView contentContainerStyle={{ ...st.scrollView, ...(isHistoryExpanded && st.justifyCenter) }}>
+					{/* <ScrollView contentContainerStyle={{ ...st.scrollView, }}> */}
 					<View style={st.avatarBorder}>
 						<Image
 							style={st.avatarImage}
@@ -82,22 +118,28 @@ const ProfileScreen = (): JSX.Element => {
 							))}
 						</View>
 					</ThemeBox>
-					<ThemeBox>
-						<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-							<Text style={st.historyTitle}>Workstations history</Text>
-							<MCIcon name='arrow-expand' size={30} style={st.expandIcon} onPress={handleExpandHistory} />
-						</View>
-						<ScrollView style={st.scrollableContainer} nestedScrollEnabled>
-							{[...Array(20)].map((_, ndx) => (
-								<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
-									<Text style={st.host}>{staticHistory().host}</Text>
-									<Text style={st.time}>{staticHistory().from}</Text>
-									<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
-									<Text style={st.time}>{staticHistory().to}</Text>
+					{/* <Animated.View style={isHistoryExpanded ? st.expandedHistory : st.collapsedHistory}> */}
+					<Animated.View style={{ ...st.animClass, ...st.themeBox }}>
+						{/* <ThemeBox style={{ height: 'auto' }}> */}
+							<TouchableOpacity onPress={() => !isHistoryExpanded ? handleExpandHistory() : handleCollapseHistory()}>
+								<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+									<Text style={st.historyTitle}>Workstations history</Text>
+									{isHistoryExpanded && <MCIcon name='arrow-collapse' size={30} style={st.expandIcon} />}
 								</View>
-							))}
-						</ScrollView>
-					</ThemeBox>
+							</TouchableOpacity>
+							<ScrollView style={st.scrollableContainer} nestedScrollEnabled>
+								{[...Array(40)].map((_, ndx) => (
+									<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
+										<Text style={st.host}>{staticHistory().host}</Text>
+										<Text style={st.time}>{staticHistory().from}</Text>
+										<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
+										<Text style={st.time}>{staticHistory().to}</Text>
+									</View>
+								))}
+							</ScrollView>
+						{/* </ThemeBox> */}
+					</Animated.View>
+
 				</ScrollView>
 			</View>
 		</BackgroundWall>
