@@ -44,15 +44,15 @@ const ww = Dimensions.get('window').width;
 const ProfileScreen = (): JSX.Element => {
 	const theme = useTheme() as CustomTheme;
 	const [isHistoryExpanded, setIsHistoryExpanded] = useState<boolean>(false)
-	// const [historyHeight, setHistoryHeight] = useState<Animated.Value>(new Animated.Value(250))
-	// const [transitionY, setTransitionY] = useState<Animated.Value>(new Animated.Value(0))
 
 	const historyHeight = useRef(new Animated.Value(250)).current
 	const transitionY = useRef(new Animated.Value(0)).current
+	const historyRef = useRef<View>(null)
 
 	const st = styles(theme, staticCoalition, historyHeight, transitionY)
 
 	const handleExpandHistory = () => {
+		historyRef?.current?.measure((x, y) => console.log('x=', x, 'y=', y))
 		setIsHistoryExpanded(true)
 		Animated.timing(historyHeight, {
 			toValue: percentage(90, wh),
@@ -60,12 +60,13 @@ const ProfileScreen = (): JSX.Element => {
 			useNativeDriver: false,
 		}).start();
 		Animated.timing(transitionY, {
-			toValue: -percentage(125, wh) / 2,
+			toValue: -wh / 2,
 			duration: 400,
 			useNativeDriver: false
 		}).start()
 	}
 	const handleCollapseHistory = () => {
+		historyRef?.current?.measure((x, y) => console.log('x=', x, 'y=', y))
 		Animated.timing(historyHeight, {
 			toValue: 250,
 			duration: 200,
@@ -76,9 +77,9 @@ const ProfileScreen = (): JSX.Element => {
 			duration: 200,
 			useNativeDriver: false
 		}).start()
-		setTimeout(() => {
-			setIsHistoryExpanded(false)
-		}, 150)
+		// setTimeout(() => {
+		setIsHistoryExpanded(false)
+		// }, 150)
 	}
 
 	return (
@@ -119,24 +120,24 @@ const ProfileScreen = (): JSX.Element => {
 						</View>
 					</ThemeBox>
 					{/* <Animated.View style={isHistoryExpanded ? st.expandedHistory : st.collapsedHistory}> */}
-					<Animated.View style={{ ...st.animClass, ...st.themeBox }}>
+					<Animated.View style={{ ...st.animClass, ...st.themeBox }} ref={historyRef}>
 						{/* <ThemeBox style={{ height: 'auto' }}> */}
-							<TouchableOpacity onPress={() => !isHistoryExpanded ? handleExpandHistory() : handleCollapseHistory()}>
-								<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-									<Text style={st.historyTitle}>Workstations history</Text>
-									{isHistoryExpanded && <MCIcon name='arrow-collapse' size={30} style={st.expandIcon} />}
+						<TouchableOpacity onPress={() => !isHistoryExpanded ? handleExpandHistory() : handleCollapseHistory()}>
+							<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+								<Text style={st.historyTitle}>Workstations history</Text>
+								{isHistoryExpanded && <MCIcon name='arrow-collapse' size={30} style={st.expandIcon} />}
+							</View>
+						</TouchableOpacity>
+						<ScrollView style={st.scrollableContainer} nestedScrollEnabled>
+							{[...Array(40)].map((_, ndx) => (
+								<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
+									<Text style={st.host}>{staticHistory().host}</Text>
+									<Text style={st.time}>{staticHistory().from}</Text>
+									<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
+									<Text style={st.time}>{staticHistory().to}</Text>
 								</View>
-							</TouchableOpacity>
-							<ScrollView style={st.scrollableContainer} nestedScrollEnabled>
-								{[...Array(40)].map((_, ndx) => (
-									<View style={[st.logContainer, ndx % 2 ? { backgroundColor: theme.colors.bgMinor } : null]} key={ndx}>
-										<Text style={st.host}>{staticHistory().host}</Text>
-										<Text style={st.time}>{staticHistory().from}</Text>
-										<Icon name='arrow-forward-ios' size={8} color={theme.colors.primaryText} />
-										<Text style={st.time}>{staticHistory().to}</Text>
-									</View>
-								))}
-							</ScrollView>
+							))}
+						</ScrollView>
 						{/* </ThemeBox> */}
 					</Animated.View>
 
