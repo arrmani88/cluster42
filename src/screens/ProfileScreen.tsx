@@ -107,7 +107,14 @@ const ProfileScreen = (): JSX.Element => {
             <Image style={st.avatarImage} source={{uri: staticAvatarImage}} />
           </View>
           <Text style={st.fullName}>{staticUserFullName}</Text>
-          <Text style={st.username}>{staticUsername}</Text>
+          <ThemeBox style={st.targettingContainer}>
+            <View style={st.targettingContents}>
+              <View style={{ flex: 1,width: '50%' }} ></View>
+              <View style={st.divider} />
+              <View style={{ flex: 1,width: '50%' }} ></View>
+            </View>
+          </ThemeBox>
+          {/* <Text style={st.username}>{staticUsername}</Text> */}
           <ThemeBox style={st.headerContentWrapper}>
             {staticHeaderData.map((item, ndx) => (
               <View style={{flexDirection: 'column'}} key={ndx}>

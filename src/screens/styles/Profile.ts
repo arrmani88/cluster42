@@ -1,8 +1,4 @@
-import {
-  Animated,
-  Dimensions,
-  StyleSheet,
-} from 'react-native';
+import {Animated, Dimensions, StyleSheet} from 'react-native';
 import {CoalitionName, CustomTheme} from '../../constants/theme';
 import {percentage} from '../../utils/percentage';
 import {padding} from '../../utils/padding';
@@ -125,7 +121,7 @@ export default (
       ...padding(8, 0),
     },
     logContainer: {
-      minHeight: 25, 
+      minHeight: 25,
       // height: 25,
       flexDirection: 'row',
       ...padding(5, 5),
@@ -147,7 +143,7 @@ export default (
       color: theme.colors.secondaryText,
       fontSize: 10,
       ...margin(0, 2),
-      textAlign: 'center'
+      textAlign: 'center',
     },
     animClass: {
       width: '100%',
@@ -179,6 +175,22 @@ export default (
       flexWrap: 'wrap',
       flexDirection: 'row',
       width: '37%',
-      justifyContent: 'center'
-    }
+      justifyContent: 'center',
+    },
+    targettingContainer: {
+      ...padding(0, 0),
+      overflow: 'hidden',
+    },
+    targettingContents: {
+      height: 100,
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    divider: {
+      height: '80%',
+      borderRightWidth: 1,
+      borderRightColor: 'grey',
+    },
   });
