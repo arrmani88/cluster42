@@ -18,7 +18,7 @@ const BackgroundWall = ({ children }: Props): JSX.Element => {
   const st = styles(theme)
 
   return (
-    <>
+    <View>
       <StatusBar
         barStyle={themeMode === 'light' ? 'dark-content' : 'light-content'}
         backgroundColor={theme.colors.statusBarBackground}
@@ -34,7 +34,7 @@ const BackgroundWall = ({ children }: Props): JSX.Element => {
 
         {children}
       </SafeAreaView>
-    </>
+    </View>
   );
 };
 

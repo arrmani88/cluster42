@@ -1,4 +1,11 @@
 {
-  "name": "cluster42",
-  "displayName": "cluster42"
+  "expo": {
+    "name": "cluster42",
+    "slug": "cluster42",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "cluster42"
 }
