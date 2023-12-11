@@ -95,7 +95,7 @@ const ProfileScreen = (): JSX.Element => {
   };
 
   return (
-    <BackgroundWall>
+    // <BackgroundWall>
       <View style={{flex: 1}}>
         <ScrollView
           contentContainerStyle={{
@@ -190,7 +190,7 @@ const ProfileScreen = (): JSX.Element => {
           </Animated.View>
         </ScrollView>
       </View>
-    </BackgroundWall>
+    // </BackgroundWall>
   );
 };
 

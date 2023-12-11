@@ -45,13 +45,13 @@ export default (
     },
     fullName: {
       color: theme.colors.primaryText,
-      fontFamily: 'consolab',
+      fontFamily: 'Consola-Bold',
       fontSize: 25,
       marginTop: 15,
     },
     username: {
       color: theme.colors.primaryText,
-      fontFamily: 'consola',
+      fontFamily: 'Consola-Regular',
       fontSize: 20,
     },
     headerContentWrapper: {
@@ -63,12 +63,12 @@ export default (
     headerTextTitle: {
       color: theme.colors.coalition[coalition],
       textAlign: 'center',
-      fontFamily: 'consola',
+      fontFamily: 'Consola-Regular',
     },
     headerTextData: {
       color: theme.colors.primaryText,
       textAlign: 'center',
-      fontFamily: 'consola',
+      fontFamily: 'Consola-Regular',
     },
     userCoordinates: {
       display: 'flex',
@@ -85,7 +85,7 @@ export default (
     location: {
       fontSize: 35,
       color: theme.colors.coalition[coalition],
-      fontFamily: 'consolab',
+      fontFamily: 'Consola-Bold',
       paddingBottom: 10,
     },
     coordinateContainer: {
@@ -100,12 +100,12 @@ export default (
     coordinateText: {
       color: theme.colors.primaryText,
       fontSize: 15,
-      fontFamily: 'consola',
+      fontFamily: 'Consola-Regular',
     },
     historyTitle: {
       fontSize: 25,
       color: theme.colors.coalition[coalition],
-      fontFamily: 'consolab',
+      fontFamily: 'Consola-Bold',
       paddingBottom: 10,
       textAlign: 'center',
       marginRight: 10,
@@ -139,7 +139,7 @@ export default (
       fontSize: 12,
     },
     time: {
-      fontFamily: 'consola',
+      fontFamily: 'Consola-Regular',
       color: theme.colors.secondaryText,
       fontSize: 10,
       ...margin(0, 2),

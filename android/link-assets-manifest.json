@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Consola-Bold.ttf",
+      "sha1": "10c98b8de38e5380d4ed41a531c77c1405a597de"
+    },
+    {
+      "path": "assets/fonts/Consola-Regular.ttf",
+      "sha1": "a32e7cdd5110945995eaa93117044bd0d12a6c62"
+    }
+  ]
+}
